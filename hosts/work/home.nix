@@ -28,6 +28,7 @@ in {
     git
     gh # GitHub CLI
     dig
+    grex # generate regex from examples
 
     # Communication & productivity
     discord
