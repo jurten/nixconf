@@ -29,6 +29,7 @@ in {
     gh # GitHub CLI
     dig
     grex # generate regex from examples
+    nmap
 
     # Communication & productivity
     discord
