@@ -148,4 +148,6 @@
     find = "fd";
     cat = "bat";
   };
+
+  home.packages = with pkgs; [ zip unzip ];
 }
