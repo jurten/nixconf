@@ -13,7 +13,10 @@
     statix     # Nix linter (catches antipatterns)
     manix      # offline Nix documentation search
     comma      # run any package without installing: , some-tool
+    net-tools  # ifconfig, netstat, route
   ];
+
+  networking.firewall.enable = true;  # ufw-equivalent; NixOS uses nftables/iptables directly
 
   # Lets unpatched ELF binaries run on NixOS — needed for:
   # - VSCode extensions that ship pre-compiled binaries
