@@ -1,22 +1,25 @@
-{ pkgs, ... }: {
+{pkgs, ...}: {
   # Nix experimental features (flakes + new CLI)
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = ["nix-command" "flakes"];
 
   # Allow unfree packages at the system level
   nixpkgs.config.allowUnfree = true;
 
   # Nix LSP, formatter, linter and helpers for editor integration
   environment.systemPackages = with pkgs; [
-    nil        # lightweight Nix LSP (fast, good for most editors)
-    nixd       # feature-rich Nix LSP (supports nixpkgs option completion)
-    alejandra  # opinionated Nix formatter
-    statix     # Nix linter (catches antipatterns)
-    manix      # offline Nix documentation search
-    comma      # run any package without installing: , some-tool
-    net-tools  # ifconfig, netstat, route
+    nil # lightweight Nix LSP (fast, good for most editors)
+    nixd # feature-rich Nix LSP (supports nixpkgs option completion)
+    alejandra # opinionated Nix formatter
+    statix # Nix linter (catches antipatterns)
+    manix # offline Nix documentation search
+    comma # run any package without installing: , some-tool
+    net-tools # ifconfig, netstat, route
   ];
 
-  networking.firewall.enable = true;  # ufw-equivalent; NixOS uses nftables/iptables directly
+  networking.firewall = {
+    enable = true;
+    allowedTCPPorts = [5173 5174];
+  }; #ufw-equivalent; NixOS uses nftables/iptables directly
 
   # Lets unpatched ELF binaries run on NixOS — needed for:
   # - VSCode extensions that ship pre-compiled binaries
@@ -28,6 +31,6 @@
   # Works with python/poetry: add a shell.nix or flake.nix and it just works
   programs.direnv = {
     enable = true;
-    nix-direnv.enable = true;  # caches nix-shell envs so they don't rebuild every time
+    nix-direnv.enable = true; # caches nix-shell envs so they don't rebuild every time
   };
 }
