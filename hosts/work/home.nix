@@ -57,6 +57,10 @@ in {
     # Star Wars terminal art
     colorscripts
 
+    # Remote desktop
+    remmina # GUI RDP/VNC client
+    freerdp # RDP backend for remmina
+
     # Utilities
     openfortivpn # Fortinet VPN
     unetbootin # bootable USB creator
