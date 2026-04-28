@@ -1,7 +1,5 @@
-{ pkgs, ... }:
-
-{
-  imports = [ ../../modules/home-manager ];
+{pkgs, ...}: {
+  imports = [../../modules/home-manager];
 
   home.username = "jurten";
   home.homeDirectory = "/home/jurten";
@@ -13,51 +11,43 @@
   home.packages = with pkgs; [
     # Editors & IDEs
     # neovim is managed by programs.neovim in modules/home-manager/nvim.nix
-    vscode-fhs          # VSCode with FHS compatibility (extensions work via nix-ld)
-    kdePackages.kate    # KDE text editor
+    kdePackages.kate # KDE text editor
 
     # Terminal & shell tools
     # kitty is managed by programs.kitty in modules/home-manager/kitty.nix
     wget
-    fastfetch           # system info on shell start
+    fastfetch # system info on shell start
     htop
-    tldr                # simplified man pages
+    tldr # simplified man pages
     zip
     p7zip
     lzip
     git
-    gh              # GitHub CLI
+    gh # GitHub CLI
     dig
-    grex                # generate regex from examples
+    grex # generate regex from examples
 
     # Communication & productivity
     discord
-    slack
-    teams-for-linux
-    obsidian            # knowledge base / notes
+    obsidian # knowledge base / notes
     libreoffice-qt6-still
 
     # Media
-    mpv                 # video player
-    gimp                # image editor
+    mpv # video player
+    gimp # image editor
 
     # Python dev stack (works with direnv: add a flake.nix/shell.nix per project)
     python3
     python3Packages.pip
-    poetry
-    uv          # fast Python package manager; provides `uvx` for running MCP servers
 
     # Hyprland ecosystem (user-level tools)
-    hyprlock     # lockscreen (config in modules/home-manager/hyprland.nix)
-    mako         # notification daemon
-    fuzzel       # keyboard-driven app launcher
-    pavucontrol  # volume control GUI (opens floating per window rules)
+    hyprlock # lockscreen (config in modules/home-manager/hyprland.nix)
+    mako # notification daemon
+    fuzzel # keyboard-driven app launcher
+    pavucontrol # volume control GUI (opens floating per window rules)
 
     # Utilities
-    openfortivpn        # Fortinet VPN
-    unetbootin          # bootable USB creator
-    google-chrome
-    claude-code
+    unetbootin # bootable USB creator
   ];
 
   home.sessionVariables = {
