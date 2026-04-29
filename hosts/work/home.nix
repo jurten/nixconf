@@ -1,5 +1,6 @@
-{pkgs, ...}: let
+{pkgs, inputs, ...}: let
   colorscripts = pkgs.callPackage ../../pkgs/colorscripts.nix {};
+  addons = inputs.nur.legacyPackages.${pkgs.system}.repos.rycee.firefox-addons;
 in {
   imports = [../../modules/home-manager];
 
@@ -93,9 +94,16 @@ in {
       path = "lq6omp2i.default";
       isDefault = true;
       settings = {
-        # Disable Firefox's own title bar / CSD window controls
         "browser.tabs.inTitlebar" = 0;
       };
+      extensions.packages = with addons; [
+        ublock-origin
+        vimium
+        darkreader
+        sponsorblock
+        tree-style-tab
+        web-clipper-obsidian
+      ];
     };
   };
 }
