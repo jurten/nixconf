@@ -2,6 +2,17 @@
   # Nix experimental features (flakes + new CLI)
   nix.settings.experimental-features = ["nix-command" "flakes"];
 
+  # Binary caches — pull prebuilt binaries, avoid compiling from source
+  nix.settings.substituters = [
+    "https://cache.nixos.org"
+    "https://nix-community.cachix.org"
+  ];
+  nix.settings.trusted-public-keys = [
+    "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
+    "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCUSeBs="
+  ];
+  nix.settings.trusted-users = [ "root" "jurten" ];
+
   # Allow unfree packages at the system level
   nixpkgs.config.allowUnfree = true;
 

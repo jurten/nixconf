@@ -19,6 +19,7 @@
       env = XCURSOR_SIZE,24
       env = QT_QPA_PLATFORM,wayland
       env = QT_WAYLAND_DISABLE_WINDOWDECORATION,1
+      env = QT_STYLE_OVERRIDE,adwaita-dark
       env = GDK_BACKEND,wayland,x11
       env = SDL_VIDEODRIVER,wayland
       env = MOZ_ENABLE_WAYLAND,1
@@ -725,6 +726,16 @@
     }
   '';
 
+  # ── Qt dark theme ────────────────────────────────────────────────────────
+  qt = {
+    enable = true;
+    platformTheme.name = "adwaita";
+    style = {
+      name    = "adwaita-dark";
+      package = pkgs.adwaita-qt;
+    };
+  };
+
   # ── GTK dark theme ───────────────────────────────────────────────────────
   gtk = {
     enable = true;
@@ -741,5 +752,5 @@
     color-scheme = "prefer-dark";
   };
 
-  home.packages = [ pkgs.rofi ];
+  home.packages = [ pkgs.rofi pkgs.adwaita-qt6 ];
 }
