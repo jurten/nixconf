@@ -149,5 +149,4 @@
     cat = "bat";
   };
 
-  home.packages = with pkgs; [ zip unzip ];
 }
