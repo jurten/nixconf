@@ -42,6 +42,8 @@ in {
     # Media
     mpv # video player
     gimp # image editor
+    zathura # PDF/PS/DjVu/CB viewer (mupdf backend)
+    glow # markdown CLI viewer/pager
 
     # Python dev stack (works with direnv: add a flake.nix/shell.nix per project)
     python3
