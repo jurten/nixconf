@@ -73,7 +73,6 @@
       }
 
       dwindle {
-        pseudotile     = true
         preserve_split = true
       }
 
@@ -111,7 +110,7 @@
       bind = $mod,       Space,  exec,          fuzzel
       bind = $mod,       Tab,    exec,          rofi -show window
       bind = $mod,       P,      pseudo,
-      bind = $mod,       E,      togglesplit,
+      bind = $mod,       E,      layoutmsg,     togglesplit
       bind = $mod,       L,      exec,          hyprlock
       bind = $mod SHIFT, Escape, exec,         wlogout
       bind = $mod,       I,      exec,          sh -c 'systemctl --user is-active --quiet hypridle.service && systemctl --user stop hypridle.service || systemctl --user start hypridle.service'
